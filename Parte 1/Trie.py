@@ -3,7 +3,6 @@ class TrieNode:
         self.children = {}
         self.is_end_of_word = False
 
-
 class Trie:
     def __init__(self):
         self.root = TrieNode()
@@ -40,7 +39,6 @@ class Trie:
             words.extend(self._collect_words(next_node, prefix + char))
         return words
 
-    # Função para calcular a distância de edição (Levenshtein)
     def levenshtein_distance(self, word1, word2):
         len_word1, len_word2 = len(word1), len(word2)
         dp = [[0] * (len_word2 + 1) for _ in range(len_word1 + 1)]
@@ -59,9 +57,7 @@ class Trie:
         return dp[len_word1][len_word2]
 
     def suggest_corrections(self, word, max_distance=2):
-        # Coletar todas as palavras no trie
         all_words = self._collect_words(self.root, "")
-        # Filtrar palavras com distância de edição dentro do limite
         suggestions = [w for w in all_words if self.levenshtein_distance(word, w) <= max_distance]
         return suggestions
 
