@@ -1,4 +1,4 @@
-from Grafo import  Grafo
+from Grafo import Grafo
 
 cidade = Grafo()
 cidade.adicionar_vertice("A")
